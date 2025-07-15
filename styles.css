@@ -1,0 +1,68 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	user-select: none;
+}
+
+:root {
+	--bg-light: hsl(20, 100%, 30%);
+	--bg-dark: hsl(20, 100%, 10%);
+	--square-light: hsl(120, 100%, 12%);
+	--square-dark: hsl(120, 100%, 10%);
+	--p1-color: hsl(30, 100%, 50%);
+	--p2-color: hsl(210, 100%, 50%);
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+	container-type: size;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	background-image: radial-gradient(farthest-side, var(--bg-light), var(--bg-dark));
+}
+
+h1 {
+	color: white;
+}
+
+#el-board {
+	width: 92cqh;
+	height: 92cqh;
+	position: relative;
+	background: conic-gradient(var(--square-light), var(--square-light) 90deg,
+			var(--square-dark) 90deg, var(--square-dark) 180deg,
+			var(--square-light) 180deg, var(--square-light) 270deg,
+			var(--square-dark) 270deg, var(--square-dark));
+	background-size: 25% 25%;
+}
+
+.chip {
+	position: absolute;
+	border-radius: 100vw;
+	border: .75cqh dashed black;
+	outline: .75cqh solid black;
+	transition-property: left, top, width, height;
+	transition-duration: .5s;
+	transition-timing-function: ease-in-out;
+	text-align: center;
+	padding-top: 2cqh;
+	font-weight: bold;
+}
+
+.chip[id^='p1'] {
+	background-color: var(--p1-color);
+}
+
+.chip[id^='p2'] {
+	background-color: var(--p2-color);
+}
+
+.selected {
+	box-shadow: 0px 0px 5cqh white;
+}
