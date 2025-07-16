@@ -14,9 +14,16 @@ const gamestate = {
 }
 
 function calcDims() {
-	dim.square_size = elBoard.offsetHeight / 8
-	dim.chip_size = elBoard.offsetHeight / 12
-	dim.chip_off = (dim.square_size - dim.chip_size) / 2
+	dim.square_size = Math.floor(elBoard.offsetHeight / 8)
+	dim.chip_size = Math.floor(dim.square_size * 0.6)
+	dim.chip_off = Math.floor((dim.square_size - dim.chip_size) / 2)
+	const root = document.documentElement
+	const thick = 0.03
+	root.style.setProperty('--stop1', Math.floor(dim.square_size * thick) + 'px')
+	root.style.setProperty('--stop2', Math.floor(dim.square_size * (1 - thick)) + 'px')
+	root.style.setProperty('--stop3', Math.floor(dim.square_size * (1 + thick)) + 'px')
+	root.style.setProperty('--stop4', Math.floor(dim.square_size * (2 - thick)) + 'px')
+	root.style.setProperty('--chip-border', Math.floor(dim.chip_size * 0.1) + 'px')
 }
 
 function adjustChips() {
