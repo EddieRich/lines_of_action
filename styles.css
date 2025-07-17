@@ -26,19 +26,37 @@ body {
 	height: 100vh;
 	container-type: size;
 	display: flex;
+	gap: 1vh;
 	flex-direction: column;
-	justify-content: space-around;
+	justify-content: start;
 	align-items: center;
 	background-image: radial-gradient(farthest-side, var(--bg-light), var(--bg-dark));
 }
 
-h1 {
+#titlebar {
 	color: white;
+	width: 83cqh;
+	height: 6cqh;
+	text-align: center;
+	font-size: 6cqh;
+	font-weight: bold;
+}
+
+#p2-status,
+#p1-status {
+	color: white;
+	position: relative;
+	width: 83cqh;
+	height: 4cqh;
+	display: grid;
+	place-items: center;
+	font-size: 3cqh;
+	font-weight: bold;
 }
 
 #el-board {
-	width: calc(min(92cqh, 92cqw));
-	height: calc(min(92cqh, 92cqw));
+	width: 83cqh;
+	height: 83cqh;
 	position: relative;
 	outline: var(--stop1) solid black;
 	background-image:
@@ -82,4 +100,23 @@ h1 {
 
 .selected {
 	box-shadow: 0px 0px calc(5 * var(--chip-border)) calc(2 * var(--chip-border)) white;
+}
+
+.target {
+	position: absolute;
+	border-radius: 100%;
+	outline: var(--chip-border) solid black;
+	transition-property: left, top, width, height;
+	transition-duration: .5s;
+	transition-timing-function: ease-in-out;
+}
+
+.target[data-player='p1'] {
+	outline-color: var(--p1-color);
+	box-shadow: inset 0px 0px calc(2 * var(--chip-border)) var(--p1-color);
+}
+
+.target[data-player='p2'] {
+	outline-color: var(--p2-color);
+	box-shadow: inset 0px 0px calc(2 * var(--chip-border)) var(--p2-color);
 }
