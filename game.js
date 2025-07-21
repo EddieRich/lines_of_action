@@ -178,7 +178,7 @@ function nextPlayer() {
 	if (gamestate.player === 'p1') {
 		gamestate.player = 'p2'
 		gamestate.opponent = 'p1'
-		setTimeout(computerChoose, 1000)
+		setTimeout(computerChooseChip, 1000)
 	}
 	else {
 		gamestate.player = 'p1'
@@ -186,11 +186,19 @@ function nextPlayer() {
 	}
 }
 
-function computerChoose() {
-	const chips = Array.from(elBoard.querySelectorAll('.chip[id^="p2"],*:not([display="none"])'))
+function computerChooseChip() {
+	const chips = Array.from(elBoard.querySelectorAll('.chip[id^="p2"]'))
 	// for now, pick a random one
 	const chip = chips[Math.floor(Math.random() * chips.length)]
 	selectChip(chip.id)
+	setTimeout(computerChooseTarget, 1000)
+}
+
+function computerChooseTarget() {
+	const targets = Array.from(elBoard.querySelectorAll('.target'))
+	// for now, pick a random one
+	const target = targets[Math.floor(Math.random() * targets.length)]
+	moveSelectedTo(parseInt(target.dataset.row), parseInt(target.dataset.col))
 }
 
 function newGame() {
